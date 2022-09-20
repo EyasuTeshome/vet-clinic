@@ -17,3 +17,18 @@ ROLLBACK;
 UPDATE animals SET species = 'digimon' WHERE name LIKE '%mon';
 
 UPDATE animals SET species = 'pokemon' WHERE species IS NULL;
+
+BEGIN;
+DELETE FROM animals;
+ROLLBACK;
+
+BEGIN;
+DELETE FROM animals WHERE date_of_birth > '2022-01-01';
+ROLLBACK;
+
+BEGIN;
+SAVEPOINT weight_save;
+UPDATE animals SET weight_kg = weight_kg * -1;
+ROLLBACK TO weight_kg;
+
+UPDATE animals SET weight_kg = weight_kg * -1 WHERE weight_kg <0;
