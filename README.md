@@ -1,6 +1,6 @@
 # Vet_Clinic Database
 
-This is a simple relational database for vet_clinic. The database contains a table for <animals>. The table contains information like name of the animal, date of birth, weight and more.
+This is a simple relational database for vet_clinic. The database contains a table for animals. The table contains information like name of the animal, date of birth, weight and more.
 
 
 ## Getting Started
