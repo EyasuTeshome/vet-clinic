@@ -42,12 +42,6 @@ SELECT AVG(weight_kg) FROM animals;
 
 
 SELECT neutered, SUM(escape_attempts) FROM animals GROUP BY neutered;
-if (false > true){
-  return false;
-}
-else {
-  return true;
-}
 
 SELECT species, MIN(weight_kg) FROM animals GROUP BY species;
 
