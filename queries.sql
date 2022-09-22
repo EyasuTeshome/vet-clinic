@@ -52,7 +52,7 @@ SELECT name FROM animals INNER JOIN owners ON animals.owners_id = owners.id WHER
 
 SELECT animals.name FROM animals INNER JOIN species ON animals.species_id = species.id WHERE species.name = 'Pokemon';
 
-SELECT owners.full_name FROM owners LEFT JOIN animals ON owners.id = animals.owners_id;
+SELECT owners.full_name, animals.name FROM owners LEFT JOIN animals ON owners.id = animals.owners_id;
 
 SELECT species.name, COUNT(*) FROM animals INNER JOIN species ON animals.species_id = species.id GROUP BY species.name;
 
