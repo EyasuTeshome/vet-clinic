@@ -69,3 +69,4 @@ SELECT animals.name FROM animals INNER JOIN owners ON owners.id = animals.owners
 
 SELECT owners.full_name FROM owners LEFT JOIN animals ON owners.id = animals.owners_id GROUP BY owners.full_name ORDER BY COUNT(*) DESC LIMIT 1;
 
+
