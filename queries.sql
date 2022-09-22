@@ -69,3 +69,23 @@ SELECT animals.name FROM animals INNER JOIN owners ON owners.id = animals.owners
 
 SELECT owners.full_name FROM owners LEFT JOIN animals ON owners.id = animals.owners_id GROUP BY owners.full_name ORDER BY COUNT(*) DESC LIMIT 1;
 
+
+-- QUERIES FOR JOIN TABLE --
+
+SELECT animals.name FROM animals INNER JOIN visits ON animals.id = visits.animals_id WHERE visits.vets_id = 1 ORDER BY visits.date_of_visit DESC LIMIT 1;
+
+SELECT COUNT(animals.name) FROM animals INNER JOIN visits ON animals.id = visits.animals_id WHERE visits.vets_id = 3;
+
+SELECT vets.name, specialization.species_id FROM vets LEFT JOIN specialization ON vets.id = specialization.vets_id;
+
+SELECT animals.name FROM animals INNER JOIN visits ON animals.id = visits.animals_id WHERE visits.vets_id = 3 AND visits.date_of_visit BETWEEN date '2020-04-01' AND date '2020-08-30';
+
+SELECT animals.name FROM animals INNER JOIN visits ON animals.id = visits.animals_id GROUP BY animals.name ORDER BY COUNT(*) DESC LIMIT 1;
+
+SELECT animals.name FROM animals INNER JOIN visits ON animals.id = visits.animals_id WHERE visits.vets_id = 2 AND visits.date_of_visit = (SELECT MIN(date_of_visit) FROM visits WHERE visits.vets_id = 2);
+
+SELECT animals.name, visits.vets_id, visits.date_of_visit FROM animals INNER JOIN visits ON animals.id = visits.animals_id WHERE visits.date_of_visit = (SELECT MAX(date_of_visit) FROM visits);
+
+SELECT COUNT(visits.animals_id) FROM visits INNER JOIN vets ON visits.vets_id = vets.id INNER JOIN animals ON animals.id = visits.animals_id INNER JOIN specialization ON specialization.species_id = vets.id WHERE specialization.species_id != animals.species_id;
+
+SELECT animals.species_id, COUNT(*) FROM animals INNER JOIN visits ON animals.id = visits.animals_id WHERE visits.vets_id = 2 GROUP BY animals.species_id ORDER BY COUNT(*) DESC LIMIT 1;
