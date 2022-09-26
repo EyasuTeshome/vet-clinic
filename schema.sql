@@ -58,3 +58,7 @@ CREATE TABLE visits (
   date_of_visit DATE,
   PRIMARY KEY (id)
 );
+
+
+-- Performance Audit --
+ALTER TABLE owners ADD COLUMN email VARCHAR(120);
