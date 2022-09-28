@@ -18,6 +18,9 @@ CREATE TABLE medical_histories (
   CONSTRAINT fk_patients FOREIGN KEY (patient_id) REFERENCES patients (id) ON DELETE CASCADE
 );
 
+-- Add indexes for foreign keys
+CREATE INDEX ON medical_histories (patient_id);
+
 -- Invoices Table
 
 CREATE TABLE invoices(
@@ -28,6 +31,9 @@ CREATE TABLE invoices(
   medical_history_id INT NOT NULL,
   FOREIGN KEY (medical_history_id) REFERENCES medical_histories(id) ON DELETE CASCADE
 );
+
+-- Add indexes for foreign keys
+CREATE INDEX ON invoices (medical_history_id);
 
 -- treatments
 CREATE TABLE treatments (
@@ -48,6 +54,9 @@ CREATE TABLE invoice_items(
   CONSTRAINT fk_treatments FOREIGN KEY (treatment_id) REFERENCES treatments(id)
 );
 
+-- Add indexes for foreign keys
+CREATE INDEX ON invoice_items (invoice_id);
+CREATE INDEX ON invoice_items (treatment_id);
 
 
 -- medical_treatments
@@ -58,3 +67,7 @@ CREATE TABLE medical_treatments (
   CONSTRAINT fk_treatments FOREIGN KEY(treatments_id) REFERENCES treatments(id),
   CONSTRAINT fk_invoice_items FOREIGN KEY(invoice_items_id) REFERENCES invoice_items(id)
 );
+
+-- Add indexes for foreign keys
+CREATE INDEX ON medical_treatments (treatments_id);
+CREATE INDEX ON medical_treatments (invoice_items_id);
